@@ -107,11 +107,13 @@ const Div = styled.div`
     border-radius: 100%;
     span {
       font-size: 14px;
+      user-select: none;
     }
   }
   svg {
     font-size: 25px;
     margin-bottom: -5px;
+    cursor: pointer;
   }
 
 `;
