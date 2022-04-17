@@ -121,7 +121,7 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: clamp(2.9rem, 2.5vw, .7rem);
+  font-size: clamp(2rem, 3vw, 4rem);
   @media (max-width: 992px) {
     font-size: 1.7rem;
   }
