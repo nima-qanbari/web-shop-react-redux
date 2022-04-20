@@ -43,8 +43,7 @@ const Ul = styled.ul`
     user-select: none;
     cursor: pointer;
     &:hover {
-      background-color: #ccc;
-      color: #000;
+      background-color: #4f4f4f;
     }
   }
 

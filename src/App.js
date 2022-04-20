@@ -9,6 +9,7 @@ import Disscount from './components/Disscount/Disscount'
 import Navbar from './components/Navbar/Navbar'
 import Slider from './components/Slider/Slider'
 import Category from './components/Category/Category'
+import Footer from './components/Footer/Footer'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Disscount />
       <Slider />
       <Category />
+      <Footer />
       </Router>
     </div>
   )
