@@ -1,29 +1,32 @@
-import React from 'react'
-import "./App.css"
+import React from "react";
+import "./App.css";
 
 //react-router-dom
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 //components
-import Disscount from './components/Disscount/Disscount'
-import Navbar from './components/Navbar/Navbar'
-import Slider from './components/Slider/Slider'
-import Category from './components/Category/Category'
-import Footer from './components/Footer/Footer'
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+
+//pages
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import SignUP from "./pages/SignUP";
 
 const App = () => {
   return (
     <div>
       <Router>
-
-      <Navbar />
-      <Disscount />
-      <Slider />
-      <Category />
-      <Footer />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signUp" element={<SignUP />} />
+        </Routes>
+        <Footer />
       </Router>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -12,6 +12,7 @@ import styled from "styled-components";
 
 //components
 import Burger from "./Burger";
+import { Link } from "react-router-dom";
 
 const Nav = styled.nav`
   display: flex;
@@ -44,6 +45,12 @@ const Ul = styled.ul`
     cursor: pointer;
     &:hover {
       background-color: #4f4f4f;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      
     }
   }
 
@@ -127,7 +134,7 @@ const Navbar = () => {
       <div>
         <Burger />
         <Ul dropdown={dropdown}>
-          <li>صفحه اصلی</li>
+          <li><Link to="/">صفحه اصلی</Link></li>
           <li onClick={dropdownHandler} className="dropdown">
             <div >
               محصولات
@@ -141,8 +148,8 @@ const Navbar = () => {
               </ul>
             </div>
           </li>
-          <li>ورود</li>
-          <li>ثبت نام</li>
+          <li><Link to="/login">ورود</Link></li>
+          <li><Link to="signup">ثبت نام</Link></li>
         </Ul>
       </div>
       <Div>

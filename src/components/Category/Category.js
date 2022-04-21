@@ -25,7 +25,7 @@ const Category = () => {
   return (
     <Div>
         {categories.map(item => (
-            <CategoryItem item={item} key={item.key} />
+            <CategoryItem item={item} key={item.id} />
         ))}
     </Div>
   )

@@ -20,7 +20,7 @@ export const validate = (data, type) => {
 
 
 
-  if (type === "signin") {
+  if (type === "signUp") {
 
     //name
     if(!data.name) {
