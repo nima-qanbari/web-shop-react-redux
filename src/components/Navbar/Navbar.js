@@ -61,6 +61,12 @@ const Ul = styled.ul`
   }
   .dropdown {
     position: relative;
+
+    &:hover {
+      ul {
+        display: flex;
+      }
+    }
   }
 
   .dropdown ul {
@@ -73,17 +79,20 @@ const Ul = styled.ul`
     border-radius: 3px;
     overflow: hidden;
     color: #000;
-    display: ${({dropdown}) => dropdown ? "flex" : "none"};
+    display: none;
     flex-direction: column;
     justify-content:center ;
     align-items: center;
-    width: 100%;
+    width: 125%;
+    transition: all .2s ease;
 
     li {
       width: 100%;
      display: flex;
      align-items: center;
      justify-content: center;
+    transition: all .2s ease;
+
 
      &:hover{
       background-color: #111;
@@ -125,26 +134,22 @@ const Div = styled.div`
 `;
 
 const Navbar = () => {
-  const [dropdown, setDropdown] = useState(false);
-  const dropdownHandler = () => {
-    setDropdown(!dropdown);
-  };
   return (
     <Nav>
       <div>
         <Burger />
-        <Ul dropdown={dropdown}>
+        <Ul>
           <li><Link to="/">صفحه اصلی</Link></li>
-          <li onClick={dropdownHandler} className="dropdown">
+          <li  className="dropdown">
             <div >
               محصولات
               <AiFillCaretDown />
               <ul>
-                <li>a</li>
-                <li>c</li>
-                <li>c</li>
-                <li>cd</li>
-                <li>cd</li>
+                <li>تابستانی</li>
+                <li>پاییزی</li>
+                <li>پیراهن</li>
+                <li>تیشرت</li>
+                <li>لباس خواب</li>
               </ul>
             </div>
           </li>

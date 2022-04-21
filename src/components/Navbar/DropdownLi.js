@@ -22,10 +22,11 @@ const Ul = styled.ul`
 const DropdownLi = ({ dropdown }) => {
   return (
     <Ul dropdown={dropdown}>
-      <li>a</li>
-      <li>c</li>
-      <li>c</li>
-      <li>cd</li>
+      <li>تابستانی</li>
+      <li>پاییزی</li>
+      <li>پیراهن</li>
+      <li>تیشرت</li>
+      <li>لباس خواب</li>
     </Ul>
   );
 };
