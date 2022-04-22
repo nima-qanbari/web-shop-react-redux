@@ -75,8 +75,8 @@ const CategoryItem = ({ item }) => {
             item.id === 1
               ? "/shirt"
               : item.id === 2
-              ? "/t-shirt"
-              : "/lightJacket"
+              ? "/tshirt"
+              : "/autumn"
           }
         >
           مشاهده بیشتر 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 //react-icons
 import { MdShoppingCart } from "react-icons/md";
@@ -12,6 +12,8 @@ import styled from "styled-components";
 
 //components
 import Burger from "./Burger";
+
+//react-router-dom
 import { Link } from "react-router-dom";
 
 const Nav = styled.nav`
@@ -86,18 +88,23 @@ const Ul = styled.ul`
     width: 125%;
     transition: all .2s ease;
 
+    a {
+      color: #000;
+    }
     li {
       width: 100%;
      display: flex;
      align-items: center;
      justify-content: center;
-    transition: all .2s ease;
+      transition: all .2s ease;
 
 
      &:hover{
       background-color: #111;
       opacity:.5;
-      color: #fff;
+      a {
+        color: #fff;
+      }
      }
     }
   }
@@ -145,11 +152,11 @@ const Navbar = () => {
               محصولات
               <AiFillCaretDown />
               <ul>
-                <li>تابستانی</li>
-                <li>پاییزی</li>
-                <li>پیراهن</li>
-                <li>تیشرت</li>
-                <li>لباس خواب</li>
+                <li><Link to="summer">تابستانی</Link></li>
+                <li><Link to="/autumn">پاییزی</Link></li>
+                <li><Link to="/shirt">پیراهن</Link></li>
+                <li><Link to="/tshirt">تیشرت</Link></li>
+                <li><Link to="/nightwear">لباس خواب</Link></li>
               </ul>
             </div>
           </li>
