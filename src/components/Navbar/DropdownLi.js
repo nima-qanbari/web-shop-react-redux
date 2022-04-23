@@ -6,15 +6,22 @@ import styled from "styled-components";
 const Ul = styled.ul`
   width: 100%;
   display: ${({ dropdown }) => (dropdown ? "block" : "none")};
-  background-color: ${({ dropdown }) => (dropdown ? "#ccc" : "")};
+
   li {
     width: 100%;
     color: #000 !important;
+    padding: 5px 10px 5px 0;
+    user-select: none;
+    color: #313335 !important;
+
+    &::before {
+      content: "_";
+      width: 12px;
+      margin-top: -5px;
+    }
 
     &:hover {
-      background-color: #111 !important;
-      opacity: .5;
-      color: #fff !important;
+      background-color: #f9f9f9 !important ;
     }
   }
 `;

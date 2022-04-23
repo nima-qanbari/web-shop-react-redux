@@ -46,7 +46,7 @@ const Ul = styled.ul`
     user-select: none;
     cursor: pointer;
     &:hover {
-      background-color: #4f4f4f;
+      background-color: #2f363d;
     }
 
     a {

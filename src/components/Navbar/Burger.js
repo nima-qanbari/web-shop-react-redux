@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 
+//components 
+import Backdrop from "./Backdrop";
+import NavbarClick from "./NavbarClick";
+
 //styled-components
 import styled from "styled-components";
-import NavbarClick from "./NavbarClick";
+
 const Div = styled.div`
   display: none;
   width: 2rem;
@@ -21,7 +25,7 @@ const Div = styled.div`
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color: ${({ open }) => (open ? "#f1f1f1" : "#fff")};
+    background-color: ${({ open }) => (open ? "gray" : "#fff")};
     border-radius: 10px;
     transform-origin: 3px;
     transition: all 0.2s linear;
@@ -55,6 +59,7 @@ const Burger = () => {
         <div></div>
       </Div>
       <NavbarClick open={open} close={closeHandler}/>
+      <Backdrop open={open} close={closeHandler}/>
     </div>
   );
 };
