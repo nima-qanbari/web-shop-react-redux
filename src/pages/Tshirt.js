@@ -4,7 +4,7 @@ import React from 'react'
 import styled from "styled-components";
 
 //components
-import Cart from '../components/Cart/Cart'
+import Product from "../components/Product/Product";
 
 //data
 import { tshirt } from '../data'
@@ -33,7 +33,7 @@ const Container = styled.div`
 const Tshirt = () => {
   return (
     <Container>
-      {tshirt.map((item) => <Cart key={item.id} data={item} />)}
+      {tshirt.map((item) => <Product key={item.id} data={item} />)}
     </Container>
   )
 }

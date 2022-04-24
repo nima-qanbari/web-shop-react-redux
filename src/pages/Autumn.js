@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 
 //components
-import Cart from "../components/Cart/Cart";
+import Product from "../components/Product/Product";
 
 //data
 import { autumn } from "../data";
@@ -34,7 +34,7 @@ const Autumn = () => {
   return (
     <Container>
       {autumn.map((item) => (
-        <Cart key={item.id} data={item} />
+        <Product key={item.id} data={item} />
       ))}
     </Container>
   );

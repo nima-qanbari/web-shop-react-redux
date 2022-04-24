@@ -18,6 +18,7 @@ import Shirt from "./pages/Shirt";
 import Tshirt from "./pages/Tshirt";
 import Nightwear from "./pages/Nightwear";
 import ProductDetail from "./pages/ProductDetail";
+import ShopCart from "./pages/ShopCart"
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/shirt" element={<Shirt />} />
           <Route path="/tshirt" element={<Tshirt />} />
           <Route path="/nightwear" element={<Nightwear />}/>
+          <Route path="/shopCart"  element={<ShopCart />}/>
           <Route path="/productDetail/:id" element={<ProductDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUP />} />
