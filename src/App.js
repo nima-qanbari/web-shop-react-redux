@@ -17,6 +17,7 @@ import Autumn from "./pages/Autumn";
 import Shirt from "./pages/Shirt";
 import Tshirt from "./pages/Tshirt";
 import Nightwear from "./pages/Nightwear";
+import ProductDetail from "./pages/ProductDetail";
 
 const App = () => {
   return (
@@ -28,8 +29,9 @@ const App = () => {
           <Route path="/summer" element={<Summer />}/>
           <Route path="/autumn" element={<Autumn />}/>
           <Route path="/shirt" element={<Shirt />} />
-          <Route path="tshirt" element={<Tshirt />} />
-          <Route path="nightwear" element={<Nightwear />}/>
+          <Route path="/tshirt" element={<Tshirt />} />
+          <Route path="/nightwear" element={<Nightwear />}/>
+          <Route path="/productDetail/:id" element={<ProductDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUP />} />
         </Routes>

@@ -1,5 +1,8 @@
 import React from "react";
 
+//react-router-dom
+import { Link } from "react-router-dom";
+
 //styled-components
 import styled from "styled-components";
 
@@ -19,9 +22,9 @@ const Container = styled.div`
   box-shadow: 0 0 5px gray;
   overflow: hidden;
   cursor: pointer;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   &:hover {
-    .backdrop{
+    .backdrop {
       visibility: visible;
     }
   }
@@ -49,8 +52,11 @@ const Backdrop = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  
 
+  a {
+    color: #000;
+    margin-top: 7px;
+  }
   svg {
     background-color: #fff;
     opacity: 1;
@@ -77,7 +83,10 @@ const Cart = ({ data }) => {
       </Circle>
 
       <Backdrop className="backdrop">
-        <AiOutlineSearch />
+        <Link to={`/productDetail/${data.id}`}>
+          <AiOutlineSearch />
+        </Link>
+
         <MdAddShoppingCart />
       </Backdrop>
     </Container>
