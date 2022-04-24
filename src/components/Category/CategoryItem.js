@@ -19,6 +19,15 @@ const Container = styled.div`
     height: 100%;
     object-fit: cover;
   }
+
+  @media (max-width: 576px) {
+    height: 40vh;
+  }
+
+  @media (max-width: 400px) {
+    height: 35vh;
+  }
+  
 `;
 
 const Info = styled.div`
