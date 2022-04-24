@@ -54,7 +54,7 @@ p {
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 20px;
   margin: 20px 0;
 }
 
@@ -87,7 +87,7 @@ const ProductDetail = () => {
       <DetailContainer>
         <h2>{title}</h2>
         <p>{desc}</p>
-        <h3>$ {price}</h3>
+        <h3>{price} هزار تومان</h3>
         <button>افزودن به سبد خرید</button>
       </DetailContainer>
       <ImgContainer>

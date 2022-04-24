@@ -1,4 +1,9 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, removeItem } from "../../Redux/Cart/cartAction";
+
+//helper
+import { isInCart } from "../../helper/function";
 
 //react-router-dom
 import { Link } from "react-router-dom";
@@ -9,6 +14,7 @@ import styled from "styled-components";
 //react-icons
 import { MdAddShoppingCart } from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai";
+import { FaTrash } from "react-icons/fa";
 
 const Container = styled.div`
   position: relative;
@@ -76,6 +82,9 @@ const Backdrop = styled.section`
 `;
 
 const Product = ({ data }) => {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   return (
     <Container>
       <Circle>
@@ -86,8 +95,11 @@ const Product = ({ data }) => {
         <Link to={`/productDetail/${data.id}`}>
           <AiOutlineSearch />
         </Link>
-
-        <MdAddShoppingCart />
+        {isInCart(state, data.id) ? (
+          <FaTrash onClick={() => dispatch(removeItem(data))}/>
+        ) : (
+          <MdAddShoppingCart onClick={() => dispatch(addItem(data))} />
+        )}
       </Backdrop>
     </Container>
   );

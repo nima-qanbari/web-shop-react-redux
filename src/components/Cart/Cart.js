@@ -1,95 +1,212 @@
-import React from "react";
-
-//react-router-dom
-import { Link } from "react-router-dom";
-
 //styled-components
 import styled from "styled-components";
 
 //react-icons
-import { MdAddShoppingCart } from "react-icons/md";
-import { AiOutlineSearch } from "react-icons/ai";
+import {FaTrash} from "react-icons/fa"
+import {IoIosRemove} from "react-icons/io"
+import {AiOutlinePlus} from "react-icons/ai"
 
-const Container = styled.div`
-  position: relative;
-  background-color: #f5fbfd;
-  border-radius: 8px;
-  width: 215px;
-  height: 250px;
+//helper
+import { quantityCount } from "../../helper/function";
+
+//useSelector and useDispatch
+import { useDispatch, useSelector } from "react-redux";
+
+
+//cart action
+import { removeItem, increase, decrease } from "../../Redux/Cart/cartAction";
+
+const Info = styled.div`
+  flex: 3;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 5px gray;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.5s ease;
-  &:hover {
-    .backdrop {
-      visibility: visible;
-    }
-  }
 `;
 
-const Circle = styled.section`
-  background-color: #fff;
-  border-radius: 100%;
-  width: 190px;
-  height: 190px;
-  text-align: center;
-
-  img {
-    width: 190px;
-    height: 190px;
-  }
-`;
-
-const Backdrop = styled.section`
-  visibility: hidden;
-  position: absolute;
+const Product = styled.div`
+  display: flex;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  justify-content: space-around;
+  background-color: aliceblue;
+  margin: 15px 0;
+  border-radius: 3px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 4px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
+`;
+
+const ProductDetail = styled.div`
+  flex: 2;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  @media (max-width: 380px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+const Image = styled.img`
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  user-select: none;
+  @media (max-width: 768px) {
+    width: 175px;
+    height: 175px;
+  }
+  @media (max-width: 576px) {
+    width: 175px;
+    height: 175px;
+  }
+  @media (max-width: 380px) {
+    width: 200px;
+    height: 200px;
+  }
+`;
+
+const Details = styled.div`
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+  justify-content: space-around;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+`;
+
+const ProductName = styled.span`
+  padding-bottom: 10px;
+  user-select: none;
+  @media (max-width: 576px) {
+    display: flex;
+    flex-direction: column;
+  }
+  @media (max-width: 380px) {
+    display: flex;
+    flex-direction: row;
+  }
+`;
+
+const ProductSize = styled.span``;
+
+const PriceDetail = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+`;
 
-  a {
-    color: #000;
-    margin-top: 7px;
-  }
-  svg {
-    background-color: #fff;
-    opacity: 1;
-    z-index: 3;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    padding: 5px;
-    margin: 3px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+const ProductAmountContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+`;
 
-    &:hover {
-      transform: scale(1.1);
-    }
+const AddContainer = styled.div`
+  display: flex;
+  align-items: center;
+  color: green;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  border-radius: 100%;
+  &:hover {
+    transform: scale(1.1);
   }
+`;
+
+const RemoveContainer = styled.div`
+  display: flex;
+  align-items: center;
+  color: red;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  border-radius: 100%;
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+const TrashContainer = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  border-radius: 100%;
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+const ProductAmount = styled.div`
+  font-size: 20px;
+  margin: 5px 8px;
+  background-color: #fff;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  padding: 0px 8px;
+  user-select: none;
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+`;
+
+const ProductPrice = styled.div`
+  font-size: 20px;
+  font-weight: 200;
+  user-select: none;
+  @media (max-width: 768px) {
+    font-size: 17px;
+  }
+  @media (max-width: 576px) {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
 `;
 
 const Cart = ({ data }) => {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const { img, price, title, id } = data;
+
   return (
-    <Container>
-      <Circle>
-        <img src={data.img} alt={data.title} />
-      </Circle>
+    <Info>
+      <Product>
+        <ProductDetail>
+          <Image src={img} />
+          <Details>
+            <ProductName>
+              <b>نام محصول :</b> {title}
+            </ProductName>
 
-      <Backdrop className="backdrop">
-        <Link to={`/productDetail/${data.id}`}>
-          <AiOutlineSearch />
-        </Link>
-
-        <MdAddShoppingCart />
-      </Backdrop>
-    </Container>
+            <ProductSize>
+              <b>سایز :</b> 37.5
+            </ProductSize>
+          </Details>
+        </ProductDetail>
+        <PriceDetail>
+          <ProductAmountContainer>
+            <AddContainer onClick={() => dispatch(increase(data))}>
+              <AiOutlinePlus />
+            </AddContainer>
+            <ProductAmount>{quantityCount(state, id)}</ProductAmount>
+            {quantityCount(state, id) > 1 ? (
+              <RemoveContainer onClick={() => dispatch(decrease(data))}>
+                <IoIosRemove />
+              </RemoveContainer>
+            ) : (
+              <TrashContainer onClick={() => dispatch(removeItem(data))}>
+                <FaTrash />
+              </TrashContainer>
+            )}
+          </ProductAmountContainer>
+          <ProductPrice>{price} هزار تومان</ProductPrice>
+        </PriceDetail>
+      </Product>
+    </Info>
   );
 };
 
