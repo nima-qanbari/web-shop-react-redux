@@ -5,6 +5,12 @@
   list-style: none;
   font-family: "vazir", sans-serif;
 }
+
+html{
+  scroll-behavior: smooth;
+
+}
+
 body {
   background-color: #E5E3E0;
   -webkit-font-smoothing: antialiased;

@@ -19,7 +19,7 @@ const A = styled.a`
   bottom: 10px;
   left: 20px;
   transition: all 0.2s ease;
-  z-index: 1000;
+  z-index: 2;
 
   svg {
     color: #fff;

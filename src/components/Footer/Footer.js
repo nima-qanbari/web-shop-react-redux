@@ -9,6 +9,9 @@ import {
   AiFillLinkedin,
 } from "react-icons/ai";
 
+//react-router-dom
+import { Link } from "react-router-dom";
+
 //styled-components
 import styled from "styled-components";
 
@@ -104,32 +107,32 @@ const Footer = () => {
       <div className="div2">
         <h2>خدمات ما</h2>
         <div className="links">
-          <a href="#">Web Design, Development</a>
-          <a href="#">Web UX Design</a>
-          <a href="#">Web Development, By React</a>
-          <a href="#">Bootstrap, SASS, CSS3, HTML5</a>
-          <a href="#">Javascript, React, Redux</a>
-          <a href="#">Flexbox, Grid</a>
-          <a href="#">Rest API</a>
+          <Link to="#">Web Design, Development</Link>
+          <Link to="#">Web UX Design</Link>
+          <Link to="#">Web Development, By React</Link>
+          <Link to="#">Bootstrap, SASS, CSS3, HTML5</Link>
+          <Link to="#">Javascript, React, Redux</Link>
+          <Link to="#">Flexbox, Grid</Link>
+          <Link to="#">Rest API</Link>
         </div>
       </div>
       <div className="div">
         <h2>حمایت از ما</h2>
-        <a href="#">
+        <Link to="#">
           <AiFillFacebook />
-        </a>
-        <a href="#">
+        </Link>
+        <Link to="#">
           <AiOutlineInstagram />
-        </a>
-        <a href="#">
+        </Link>
+        <Link to="#">
           <AiOutlineTwitter />
-        </a>
-        <a href="#">
+        </Link>
+        <Link to="#">
           <AiFillYoutube />
-        </a>
-        <a href="#">
+        </Link>
+        <Link to="#">
           <AiFillLinkedin />
-        </a>
+        </Link>
       </div>
     </Section>
   );

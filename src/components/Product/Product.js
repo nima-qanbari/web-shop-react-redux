@@ -81,6 +81,46 @@ const Backdrop = styled.section`
   }
 `;
 
+const Icon = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  transition: all 0.2s ease;
+  position: relative;
+  &:hover:before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:before {
+    content: attr(data-hover);
+    visibility: hidden;
+    opacity: 0;
+    width: 80px;
+    background-color: black;
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    transition: opacity 0.2s ease-in-out;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 110%;
+  }
+
+  &:hover {
+    background-color: #e9f5f5;
+    transform: scale(1.1);
+  }
+`;
+
 const Product = ({ data }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -92,13 +132,21 @@ const Product = ({ data }) => {
       </Circle>
 
       <Backdrop className="backdrop">
-        <Link to={`/productDetail/${data.id}`}>
-          <AiOutlineSearch />
-        </Link>
+        <Icon data-hover="جزییات محصول">
+          <Link to={`/productDetail/${data.id}`}>
+            <AiOutlineSearch />
+          </Link>
+        </Icon>
         {isInCart(state, data.id) ? (
-          <FaTrash onClick={() => dispatch(removeItem(data))}/>
+          <Icon data-hover="حذف از سبد خرید">
+            <FaTrash onClick={() => dispatch(removeItem(data))} />
+          </Icon>
         ) : (
-          <MdAddShoppingCart onClick={() => dispatch(addItem(data))} />
+          <Icon data-hover="افزودن به سبد خرید">
+            <MdAddShoppingCart
+              onClick={() => dispatch(addItem(data))}
+            />
+          </Icon>
         )}
       </Backdrop>
     </Container>
