@@ -9,6 +9,8 @@ import {
   AiFillLinkedin,
 } from "react-icons/ai";
 
+import {BsFillSuitHeartFill} from "react-icons/bs"
+
 //react-router-dom
 import { Link } from "react-router-dom";
 
@@ -16,6 +18,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Section = styled.section`
+  position: relative;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -87,6 +90,17 @@ const Section = styled.section`
       width: 100%;
     }
   }
+
+  .nima {
+    position: absolute;
+    left: 20px;
+    bottom: 15px;
+    font-size: 12px;
+
+    svg {
+      color: red;
+    }
+  }
 `;
 
 const Footer = () => {
@@ -134,6 +148,7 @@ const Footer = () => {
           <AiFillLinkedin />
         </Link>
       </div>
+      <p className="nima">made by nima <BsFillSuitHeartFill /> qanbari</p>
     </Section>
   );
 };

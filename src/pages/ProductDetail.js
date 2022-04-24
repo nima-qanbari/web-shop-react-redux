@@ -9,6 +9,19 @@ import styled from "styled-components";
 //data
 import { productList } from "../data";
 
+//useSelector and useDispatch
+import { useDispatch, useSelector } from "react-redux";
+
+//cartAction
+import { addItem, removeItem } from "../Redux/Cart/cartAction";
+
+//helper
+import {isInCart} from "../helper/function"
+
+//react-icons
+
+import {FcCheckmark} from "react-icons/fc"
+
 const Container = styled.div`
   margin: 80px auto 0 ;
   max-width: 1200px;
@@ -76,11 +89,32 @@ button {
 }
 `;
 
+const Div =styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+
+  span{
+    color: green;
+  }
+
+  button{
+    border: 1px solid red;
+    &:hover{
+      background-color: red;
+      color: #fff;
+    }
+  }
+`
+
 const ProductDetail = () => {
   const { id } = useParams();
 
   const product = productList[id - 1];
   const { img, title, desc, price } = product;
+
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
 
   return (
     <Container>
@@ -88,7 +122,23 @@ const ProductDetail = () => {
         <h2>{title}</h2>
         <p>{desc}</p>
         <h3>{price} هزار تومان</h3>
-        <button>افزودن به سبد خرید</button>
+        
+          {!isInCart(state, product.id) ? (
+            <button onClick={() => dispatch(addItem(product))}>
+              افزودن به سبد خرید
+            </button>
+          ) : (
+            <Div>
+              <span>به سبد خرید شما اضافه شد <FcCheckmark/></span>
+              <button
+                className="remove-btn"
+                onClick={() => dispatch(removeItem(product))}
+              >
+                حذف از سبد خرید
+              </button>
+            </Div>
+          )}
+        
       </DetailContainer>
       <ImgContainer>
         <img src={img} alt="" />
