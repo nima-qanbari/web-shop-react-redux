@@ -18,7 +18,7 @@ const Ul = styled.ul`
     color: #313335 !important;
 
     a {
-      color: #424140;
+      color: #494949 !important;
     }
     &::before {
       content: "_";

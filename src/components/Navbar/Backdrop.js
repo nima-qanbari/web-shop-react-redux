@@ -17,6 +17,10 @@ background-color: ${({ open }) => (open ? "rgba(0, 0, 0, 0.5)" : "")};
 display: block;
 }
 
+@media (max-width:576px){
+  width: 50%;
+}
+
 `
 
 const Backdrop = ({open , close}) => {

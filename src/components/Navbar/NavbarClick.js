@@ -29,6 +29,9 @@ const Ul = styled.ul`
   @media (max-width: 768px) {
     display: ${({ open }) => (open ? "flex" : "none")};
   }
+  @media (max-width: 576px) {
+    width: 50%;
+  }
 
   li {
     color: gray;
@@ -38,7 +41,6 @@ const Ul = styled.ul`
     display: flex;
     font-weight: 600;
     font-size: 12px;
-    align-items: center;
     cursor: pointer;
     width: 100%;
     user-select: none;
@@ -50,6 +52,8 @@ const Ul = styled.ul`
   li > a {
         text-decoration: none;
         color: gray;
+        display: flex;
+        align-items: center;
      
   }
 
