@@ -13,8 +13,12 @@ color: #fff;
 margin-top: 55px;
 
 @media (max-width: 400px) {
-  font-size: 13px;
+  font-size: 12px;
 }
+@media (max-width: 300px) {
+  font-size: 10px;
+}
+
 `
 const Disscount = () => {
   return (

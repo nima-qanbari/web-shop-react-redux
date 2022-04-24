@@ -7,10 +7,15 @@ const Div = styled.div`
 position: fixed;
 top: 0;
 left: 0;
+display: none;
 bottom: 0;
 width: 60%;
 background-color: ${({ open }) => (open ? "rgba(0, 0, 0, 0.5)" : "")};
 
+
+@media (max-width:768px){
+display: block;
+}
 
 `
 

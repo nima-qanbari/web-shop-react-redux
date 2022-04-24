@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+//react-router-dom
+import { Link } from "react-router-dom";
+
 //react-icons
 import { AiOutlineHome } from "react-icons/ai";
 import { IoMdArrowDropleft } from "react-icons/io";
@@ -26,11 +29,12 @@ const Ul = styled.ul`
   @media (max-width: 768px) {
     display: ${({ open }) => (open ? "flex" : "none")};
   }
+
   li {
+    color: gray;
     position: relative;
     transition: background-color 0.1s linear;
     padding: 10px 10px 10px 0;
-    color: gray;
     display: flex;
     font-weight: 600;
     font-size: 12px;
@@ -41,6 +45,12 @@ const Ul = styled.ul`
     &:hover {
       background-color: #f2f2f2;
     }
+  }
+
+  li > a {
+        text-decoration: none;
+        color: gray;
+     
   }
 
   .align {
@@ -73,20 +83,29 @@ const NavbarClick = ({ open, close }) => {
     <div>
       <Ul open={open} dropdown={dropdown}>
         <li className="align" onClick={close}>
-          <AiOutlineHome /> صفحه اصلی
+          <Link to="/">
+            <AiOutlineHome /> صفحه اصلی
+          </Link>
         </li>
         <li className="dropdown" onClick={dropdownHandler}>
           <div className="align">
             محصولات
             <IoMdArrowDropleft />
           </div>
-          <DropdownLi dropdown={dropdown} />
+          <DropdownLi close={close} dropdown={dropdown} />
         </li>
         <li className="align" onClick={close}>
-          <BsBoxArrowInRight />
-          ورود
+          <Link to="/login">
+            <BsBoxArrowInRight />
+            ورود
+          </Link>
         </li>
-        <li className="align" onClick={close}><BiUserPin />ثبت نام</li>
+        <li className="align" onClick={close}>
+          <Link to="/signUp">
+            <BiUserPin />
+            ثبت نام
+          </Link>
+        </li>
         <hr />
       </Ul>
     </div>

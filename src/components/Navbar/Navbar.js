@@ -43,6 +43,7 @@ const Ul = styled.ul`
     display: flex;
     align-items: center;
     padding:10px 19px;
+    font-size: 14px;
     user-select: none;
     cursor: pointer;
     &:hover {
@@ -100,11 +101,7 @@ const Ul = styled.ul`
 
 
      &:hover{
-      background-color: #111;
-      opacity:.5;
-      a {
-        color: #fff;
-      }
+      background-color: rgba(226, 226, 226, .7) ;
      }
     }
   }

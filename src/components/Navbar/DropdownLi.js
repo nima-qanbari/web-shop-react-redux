@@ -1,5 +1,8 @@
 import React from "react";
 
+//react-router-dom
+import { Link } from "react-router-dom";
+
 //styled-components
 import styled from "styled-components";
 
@@ -14,6 +17,9 @@ const Ul = styled.ul`
     user-select: none;
     color: #313335 !important;
 
+    a {
+      color: #424140;
+    }
     &::before {
       content: "_";
       width: 12px;
@@ -26,14 +32,14 @@ const Ul = styled.ul`
   }
 `;
 
-const DropdownLi = ({ dropdown }) => {
+const DropdownLi = ({ dropdown, close }) => {
   return (
     <Ul dropdown={dropdown}>
-      <li>تابستانی</li>
-      <li>پاییزی</li>
-      <li>پیراهن</li>
-      <li>تیشرت</li>
-      <li>لباس خواب</li>
+      <li><Link onClick={close} to="/summer">تابستانی</Link></li>
+      <li><Link onClick={close} to="/autumn">پاییزی</Link></li>
+      <li><Link onClick={close} to="/shirt">پیراهن</Link></li>
+      <li><Link onClick={close} to="/tshirt">تیشرت</Link></li>
+      <li><Link onClick={close} to="/nightwear">لباس خواب</Link></li>
     </Ul>
   );
 };
